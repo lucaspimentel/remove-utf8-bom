@@ -1,3 +1,11 @@
-/bin
-/obj
-/remove-utf8-bom.sln
+# IDEs
+**/.vs
+**/.vscode
+**/.idea
+
+# Build
+**/bin
+**/obj
+
+# User-specific files
+**/.user
