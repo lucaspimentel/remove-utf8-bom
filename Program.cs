@@ -33,14 +33,15 @@ foreach (var filename in filenames)
         file.ReadByte() == 0xBB &&
         file.ReadByte() == 0xBF)
     {
-        var bytes = new byte[file.Length - 3];
-        await file.ReadExactlyAsync(bytes);
+        var tempFile = filename + ".tmp";
 
-        file.Seek(0, SeekOrigin.Begin);
-        file.SetLength(file.Length - 3);
-        await file.WriteAsync(bytes);
+        using (var output = File.Create(tempFile))
+        {
+            await file.CopyToAsync(output);
+        }
 
         file.Close();
+        File.Move(tempFile, filename, overwrite: true);
 
         modifiedCount++;
         Console.WriteLine($"Removed BOM from {filename}");
