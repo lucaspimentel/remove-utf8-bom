@@ -12,7 +12,7 @@ if (!Directory.Exists(path))
     return;
 }
 
-var filenameExtensions = new string[] { "*.cs", "*.cshtml", ".js", ".css", ".html", ".json", ".xml", ".txt", "*.sh", "*.md", "*.csproj", "*.sln" };
+var filenameExtensions = new string[] { "*.cs", "*.cshtml", "*.js", "*.css", "*.html", "*.json", "*.xml", "*.txt", "*.sh", "*.md", "*.csproj", "*.sln" };
 
 var filenames = from filenameExtension in filenameExtensions
                 from filename in Directory.GetFiles(path, filenameExtension, SearchOption.AllDirectories)
