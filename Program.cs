@@ -15,7 +15,7 @@ if (!Directory.Exists(path))
 var filenameExtensions = new string[] { "*.cs", "*.cshtml", "*.js", "*.css", "*.html", "*.json", "*.xml", "*.txt", "*.sh", "*.md", "*.csproj", "*.sln" };
 
 var filenames = from filenameExtension in filenameExtensions
-                from filename in Directory.GetFiles(path, filenameExtension, SearchOption.AllDirectories)
+                from filename in Directory.EnumerateFiles(path, filenameExtension, SearchOption.AllDirectories)
                 where !filename.Contains(".git" + Path.DirectorySeparatorChar)
                 select filename;
 
